@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Video Swiper</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Full-screen video styling */
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.5);
+            /* Makes text more readable */
+        }
+
+        /* Content Overlay */
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10%;
+        }
+
+        .tagline {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            color: #00d2ff;
+            margin-bottom: 20px;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: 0.8s;
+        }
+
+        .title {
+            font-size: 8vw;
+            font-weight: 900;
+            line-height: 1;
+            text-transform: uppercase;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: 1s 0.2s;
+        }
+
+        /* Animation when slide becomes active */
+        .swiper-slide-active .tagline,
+        .swiper-slide-active .title {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Modern Progress UI */
+        .swiper-pagination-bullets {
+            bottom: 50px !important;
+            left: 10% !important;
+            width: auto !important;
+            display: flex;
+            gap: 20px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 60px;
+            height: 4px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.2) !important;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #00d2ff !important;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="swiper myCinematicSwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source
+                        src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-the-night-sky-loop-9710-large.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="slide-content">
+                    <p class="tagline">Explore the Void</p>
+                    <h1 class="title">GALAXY</h1>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source
+                        src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-shore-at-night-4478-large.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="slide-content">
+                    <p class="tagline">Deep Blue</p>
+                    <h1 class="title">OCEAN</h1>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source
+                        src="https://assets.mixkit.co/videos/preview/mixkit-curvy-road-in-the-middle-of-a-forest-34543-large.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="slide-content">
+                    <p class="tagline">The Journey</p>
+                    <h1 class="title">ESCAPE</h1>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".myCinematicSwiper", {
+            speed: 1500,
+            effect: "fade", // Use fade for a cinematic look
+            fadeEffect: {
+                crossFade: true
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            loop: true,
+        });
+    </script>
+</body>
+
+</html>

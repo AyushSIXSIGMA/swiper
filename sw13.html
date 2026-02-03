@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Game Selector</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050505;
+            color: #00ffcc;
+            font-family: 'Orbitron', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            /* Scanline Overlay Effect */
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 50px 0;
+        }
+
+        .swiper-slide {
+            width: 350px;
+            height: 500px;
+            background: rgba(0, 20, 20, 0.8);
+            border: 2px solid #00ffcc;
+            border-radius: 5px;
+            position: relative;
+            transition: 0.5s;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Hologram Glitch Style */
+        .swiper-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 204, 0.1) 3px);
+            pointer-events: none;
+        }
+
+        .swiper-slide-active {
+            box-shadow: 0 0 50px rgba(0, 255, 204, 0.5);
+            border-color: #fff;
+        }
+
+        .char-img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            filter: grayscale(1) sepia(1) hue-rotate(120deg) brightness(1.2);
+            transition: 0.5s;
+        }
+
+        .swiper-slide-active .char-img {
+            filter: grayscale(0) brightness(1);
+        }
+
+        .char-info {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            flex-grow: 1;
+            border-top: 1px solid #00ffcc;
+        }
+
+        .char-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            font-size: 0.7rem;
+            display: flex;
+            gap: 10px;
+            opacity: 0.7;
+        }
+
+        /* Custom Navigation Hooks */
+        .game-nav {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: 1px solid #00ffcc;
+            transition: 0.3s;
+            background: transparent;
+            color: #00ffcc;
+        }
+
+        .nav-btn:hover {
+            background: #00ffcc;
+            color: #000;
+            box-shadow: 0 0 20px #00ffcc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="swiper myGameSwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <img class="char-img" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070" />
+                <div class="char-info">
+                    <div class="char-name">Viper</div>
+                    <div class="stats"><span>HP: 80</span> <span>SPD: 95</span> <span>DMG: 60</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <img class="char-img" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071" />
+                <div class="char-info">
+                    <div class="char-name">Tanker</div>
+                    <div class="stats"><span>HP: 200</span> <span>SPD: 30</span> <span>DMG: 85</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <img class="char-img" src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070" />
+                <div class="char-info">
+                    <div class="char-name">Ghost</div>
+                    <div class="stats"><span>HP: 60</span> <span>SPD: 100</span> <span>DMG: 40</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <img class="char-img" src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1965" />
+                <div class="char-info">
+                    <div class="char-name">Blaze</div>
+                    <div class="stats"><span>HP: 110</span> <span>SPD: 70</span> <span>DMG: 90</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <img class="char-img" src="https://images.unsplash.com/photo-1560253023-3ee5d647fbba?q=80&w=2070" />
+                <div class="char-info">
+                    <div class="char-name">Oracle</div>
+                    <div class="stats"><span>HP: 90</span> <span>SPD: 60</span> <span>DMG: 70</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="game-nav">
+        <button class="nav-btn prev-btn">PREV_UNIT</button>
+        <button class="nav-btn next-btn">NEXT_UNIT</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".myGameSwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            loop: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 30,      // Tilt the cards
+                stretch: 0,
+                depth: 200,      // Push side cards back
+                modifier: 1,
+                slideShadows: false,
+            },
+            navigation: {
+                nextEl: ".next-btn",
+                prevEl: ".prev-btn",
+            },
+            on: {
+                slideChangeTransitionStart: function () {
+                    // You could trigger a "beep" sound effect here!
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

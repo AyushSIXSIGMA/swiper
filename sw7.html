@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Layered Slider</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Dynamic background image that stays fixed */
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 50px 0;
+        }
+
+        .swiper-slide {
+            width: 400px;
+            height: 500px;
+            /* The Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            transition: 0.4s ease;
+        }
+
+        /* Hover effect to make it feel interactive */
+        .swiper-slide:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .slide-number {
+            font-size: 4rem;
+            font-weight: 900;
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Minimalist pagination */
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: #fff !important;
+            opacity: 0.3;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            width: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="swiper glassSwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="slide-number">01</div>
+                <div class="content">
+                    <h3>UI Strategy</h3>
+                    <p>We craft interfaces that aren't just pretty, but purposeful and user-centric.</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-number">02</div>
+                <div class="content">
+                    <h3>Motion Design</h3>
+                    <p>Bringing static pixels to life with fluid, physics-based animations.</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-number">03</div>
+                <div class="content">
+                    <h3>Development</h3>
+                    <p>Clean code architecture tailored for scalability and lightning-fast speed.</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-number">04</div>
+                <div class="content">
+                    <h3>Branding</h3>
+                    <p>Creating visual identities that resonate with your target audience.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".glassSwiper", {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            // Subtle slide effect
+            keyboard: true,
+            mousewheel: {
+                forceToAxis: true,
+            },
+        });
+    </script>
+</body>
+
+</html>

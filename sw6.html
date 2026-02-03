@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Marquee Swiper</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .marquee-container {
+            padding: 40px 0;
+            background: #000;
+            transform: rotate(-2deg);
+            /* Adding a slight tilt for "edge" */
+            width: 110%;
+            margin-left: -5%;
+        }
+
+        /* Linear movement logic */
+        .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+
+        .swiper-slide {
+            width: 250px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .swiper-slide:hover {
+            background: #ff3e3e;
+            border-color: #ff3e3e;
+            cursor: pointer;
+        }
+
+        .label {
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 300;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="label">Our Tech Stack</div>
+
+    <div class="marquee-container">
+        <div class="swiper marqueeSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">React JS</div>
+                <div class="swiper-slide">Swiper</div>
+                <div class="swiper-slide">Node JS</div>
+                <div class="swiper-slide">MongoDB</div>
+                <div class="swiper-slide">Docker</div>
+                <div class="swiper-slide">Python</div>
+                <div class="swiper-slide">Three JS</div>
+                <div class="swiper-slide">Vite</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".marqueeSwiper", {
+            loop: true,
+            spaceBetween: 30,
+            slidesPerView: "auto",
+            speed: 3000, // Speed of the transition
+            autoplay: {
+                delay: 0, // No delay between transitions
+                disableOnInteraction: false,
+            },
+            // This is the secret for the marquee look:
+            freeMode: true,
+            allowTouchMove: true,
+        });
+    </script>
+</body>
+
+</html>
