@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Creative Swiper</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        /* Split Content Layout */
+        .slide-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            height: 100%;
+        }
+
+        .text-side {
+            padding: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #111;
+        }
+
+        .text-side h2 {
+            font-size: 5vw;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: 0.8s all ease;
+        }
+
+        .image-side {
+            background-size: cover;
+            background-position: center;
+            clip-path: inset(0 100% 0 0);
+            /* Animation starting point */
+            transition: 1s clip-path ease-in-out;
+        }
+
+        /* Active Slide Animations */
+        .swiper-slide-active .text-side h2 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .swiper-slide-active .image-side {
+            clip-path: inset(0 0 0 0);
+        }
+
+        /* Custom Navigation Hooks */
+        .nav-container {
+            position: absolute;
+            bottom: 50px;
+            left: 10%;
+            z-index: 100;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 10px 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Number Pagination */
+        .swiper-pagination-fraction {
+            color: #fff;
+            font-size: 1.5rem;
+            bottom: 55px !important;
+            left: auto !important;
+            right: 10% !important;
+            width: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="swiper myCreativeSwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="text-side">
+                        <h2>NOIR<br>COLLECTION</h2>
+                        <p>Minimalist aesthetics for the modern soul.</p>
+                    </div>
+                    <div class="image-side"
+                        style="background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="text-side">
+                        <h2>STREET<br>VIBES</h2>
+                        <p>Captured in the heart of Tokyo's neon nights.</p>
+                    </div>
+                    <div class="image-side"
+                        style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2069')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="text-side">
+                        <h2>SILENT<br>PEAK</h2>
+                        <p>Where the earth meets the sky in silence.</p>
+                    </div>
+                    <div class="image-side"
+                        style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070')">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-container">
+            <div class="nav-btn prev">Prev</div>
+            <div class="nav-btn next">Next</div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".myCreativeSwiper", {
+            loop: true,
+            speed: 1000,
+            mousewheel: true,
+            keyboard: true,
+            effect: "creative",
+            creativeEffect: {
+                prev: { shadow: true, translate: [0, 0, -400] },
+                next: { translate: ["100%", 0, 0] },
+            },
+            navigation: {
+                nextEl: ".next",
+                prevEl: ".prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                type: "fraction",
+            }
+        });
+    </script>
+</body>
+
+</html>

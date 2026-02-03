@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Creative Slider</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #fff;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+        }
+
+        .swiper-slide {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The Parallax Background */
+        .parallax-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 130%;
+            /* Extra width for the movement */
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6);
+        }
+
+        /* Text Content Animation */
+        .title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            z-index: 10;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            z-index: 10;
+        }
+
+        .content-box {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* Custom Navigation Styling */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #fff !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 60px !important;
+            height: 60px !important;
+            border-radius: 50%;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.2rem !important;
+        }
+
+        /* Progress Bar Pagination */
+        .swiper-pagination-progressbar {
+            background: rgba(255, 255, 255, 0.1) !important;
+            height: 4px !important;
+        }
+
+        .swiper-pagination-progressbar-fill {
+            background: #ff3e3e !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="swiper myParallaxSwiper">
+        <div class="parallax-bg"
+            style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2070')"
+            data-swiper-parallax="-23%"></div>
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="content-box">
+                    <div class="subtitle" data-swiper-parallax="-300">Adventure Awaits</div>
+                    <div class="title" data-swiper-parallax="-100">EXPLORE</div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="content-box">
+                    <div class="subtitle" data-swiper-parallax="-300">City Horizons</div>
+                    <div class="title" data-swiper-parallax="-100">URBAN</div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="content-box">
+                    <div class="subtitle" data-swiper-parallax="-300">Quiet Moments</div>
+                    <div class="title" data-swiper-parallax="-100">PEACE</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".myParallaxSwiper", {
+            speed: 1200,
+            parallax: true, // Key feature enabled here
+            loop: true,
+            keyboard: {
+                enabled: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                type: "progressbar",
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+</body>
+
+</html>

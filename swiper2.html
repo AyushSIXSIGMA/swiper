@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiper JS Cards Effect</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            background-color: #1a1a1a;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .swiper {
+            width: 320px;
+            height: 450px;
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Distinct Slide Colors */
+        .swiper-slide:nth-child(1) {
+            background: #ff5f6d;
+            background: linear-gradient(to right, #ffc371, #ff5f6d);
+        }
+
+        .swiper-slide:nth-child(2) {
+            background: #3ca55c;
+            background: linear-gradient(to right, #b5ac49, #3ca55c);
+        }
+
+        .swiper-slide:nth-child(3) {
+            background: #2193b0;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+        }
+
+        .swiper-slide:nth-child(4) {
+            background: #ee0979;
+            background: linear-gradient(to right, #ff6a00, #ee0979);
+        }
+
+        .swiper-slide:nth-child(5) {
+            background: #00c6ff;
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+        }
+
+        /* Text styling */
+        .slide-info {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .slide-info span {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="swiper myCardsSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="slide-info"><span>Design 01</span>Stack Slide</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-info"><span>Design 02</span>Creative Layout</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-info"><span>Design 03</span>Swiper JS</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-info"><span>Design 04</span>Mobile First</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-info"><span>Design 05</span>Smooth Feel</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".myCardsSwiper", {
+            effect: "cards",
+            grabCursor: true,
+            perSlideOffset: 8, // Space between stacked cards
+            perSlideRotate: 2, // Rotation of stacked cards
+            rotate: true,
+            slideShadows: true,
+        });
+    </script>
+</body>
+
+</html>
